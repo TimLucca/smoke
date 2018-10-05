@@ -8,6 +8,12 @@
         <template v-else-if="'Python 2'">
           <span>Python 2</span>
         </template>
+        <template v-else-if="'Ruby'">
+          <span>Ruby</span>
+        </template>
+        <template v-else-if="'Java'">
+          <span>Java</span>
+        </template>
       </button>
 
       <b-dropdown-item :value="'Python 3'">
@@ -22,6 +28,20 @@
         <div class="dropdown-content" @click="changeMode('Python 2')">
           <div class="dropdown-item">
             <h3>Python 2</h3>
+          </div>
+        </div>
+      </b-dropdown-item>
+      <b-dropdown-item :value="'Ruby'">
+        <div class="dropdown-content" @click="changeMode('Ruby')">
+          <div class="dropdown-item">
+            <h3>Ruby</h3>
+          </div>
+        </div>
+      </b-dropdown-item>
+      <b-dropdown-item :value="'Java'">
+        <div class="dropdown-content" @click="changeMode('Java')">
+          <div class="dropdown-item">
+            <h3>Java</h3>
           </div>
         </div>
       </b-dropdown-item>
