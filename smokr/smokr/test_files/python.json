@@ -1,0 +1,22 @@
+{
+  "tests" : [
+    {
+      "output" : "MQo=",
+      "name" : "Should Pass",
+      "input" : "NQ=="
+    },
+    {
+      "output": "LTEK",
+      "name": "Should Pass 2",
+      "input": "Mw=="
+    },
+    {
+      "output" : "MQo=",
+      "name" : "Should Fail",
+      "input" : "Mw=="
+    }
+  ],
+  "command" : "python3 test.py",
+  "code" : "eCA9IGludChpbnB1dCgpKQp5ID0geCAtIDQKcHJpbnQoeSk=",
+  "file" : "test.py"
+}
