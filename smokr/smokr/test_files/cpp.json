@@ -1,0 +1,18 @@
+{
+  "tests" : [
+    {
+      "output" : "MQo=",
+      "name" : "Test 1",
+      "input" : "NQ=="
+    },
+    {
+      "output" : "NQ==",
+      "name" : "test 2",
+      "input" : "MQo="
+    }
+  ],
+  "build" : "g++ test.cpp -o test",
+  "command" : "./test",
+  "code" : "I2luY2x1ZGUgPGlvc3RyZWFtPgppbnQgbWFpbigpeyAKaW50IHg7IApzdGQ6OmNpbiA+PiB4OyAKc3RkOjpjb3V0IDw8IHgtNDsgCnJldHVybiAwOwp9",
+  "file" : "test.cpp"
+}
