@@ -42,7 +42,6 @@
   </div>
 </template>
 
-
 <script>
   import Vue from 'vue'
   import Brace from 'vue-bulma-brace'
