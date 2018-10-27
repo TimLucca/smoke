@@ -16,15 +16,14 @@
 
     <!--Maximize Button-->
     <a class="button is-small  is-pulled-right">
-      on:click="toggleColor">
-      <span class="icon is-small ">
+      <span class="icon is-small " v-on:click="maximize()">
       <font-awesome-icon icon="window-maximize" />
     </span>
     </a>
 
     <!--Minimize Button -->
     <a class="button is-small  is-pulled-right">
-    <span class="icon is-small ">
+    <span class="icon is-small " v-on:click="minimize()">
       <font-awesome-icon icon="window-minimize" />
     </span>
     </a>
@@ -80,6 +79,14 @@
       return {
         languages: languages,
         selectedLanguage: languages[0]
+      }
+    },
+    methods: {
+      maximize: function () {
+        console.log('maximized')
+      },
+      minimize: function () {
+        console.log('minimized')
       }
     }
   }
