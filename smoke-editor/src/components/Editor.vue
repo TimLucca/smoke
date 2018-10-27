@@ -1,5 +1,6 @@
 <template>
   <div class = "editor">
+<<<<<<< HEAD
     <b-dropdown v-model="mode">
       <button class="button is-primary" type="button" slot="trigger">
         <template v-if="'Python 3'">
@@ -14,22 +15,18 @@
         <template v-else-if="'Java'">
           <span>Java</span>
         </template>
+=======
+    <b-dropdown v-model="selectedLanguage">
+      <button slot="trigger" class="button is-primary">
+        <span>{{ selectedLanguage.name }}</span>
+        <b-icon icon="arrow-down"/>
+>>>>>>> Develop
       </button>
 
-      <b-dropdown-item :value="'Python 3'">
-        <div class="dropdown-content" @click="changeMode('Python 3')">
-          <div class="dropdown-item">
-            <h3>Python 3</h3>
-          </div>
-        </div>
-      </b-dropdown-item>
-
-      <b-dropdown-item :value="'Python 2'">
-        <div class="dropdown-content" @click="changeMode('Python 2')">
-          <div class="dropdown-item">
-            <h3>Python 2</h3>
-          </div>
-        </div>
+      <b-dropdown-item v-for="lang in languages"
+                       v-bind:value="lang"
+                       v-bind:key="lang.name">
+                       {{ lang.name }}
       </b-dropdown-item>
       <b-dropdown-item :value="'Ruby'">
         <div class="dropdown-content" @click="changeMode('Ruby')">
@@ -50,7 +47,7 @@
     <brace style="height: 500px"
            :fontsize="'12px'"
            :theme="'github'"
-           :mode="'python'"
+           :mode="selectedLanguage.tag"
            :codefolding="'markbegin'"
            :softwrap="'free'"
            :selectionstyle="'text'"
@@ -62,27 +59,51 @@
 
 
 <script>
-import Brace from 'vue-bulma-brace'
 import Vue from 'vue'
+import Brace from 'vue-bulma-brace'
 import Buefy from 'buefy'
 // import 'buefy/lib/buefy.css'
 
 Vue.use(Buefy)
 
 export default{
-  data () {
-    return {
-      mode: 'Python 3'
-    }
-  },
   components: {
     Brace
   },
-  methods: {
-    changeMode (newMode) {
-      console.log(this.mode)
-      this.mode = newMode
-      console.log(this.mode)
+  data: function () {
+    let languages = [
+      {
+        name: 'Python 3',
+        tag: 'python'
+      },
+      {
+        name: 'Python 2',
+        tag: 'python'
+      },
+      {
+        name: 'Ruby',
+        tag: 'ruby'
+      },
+      {
+        name: 'Java',
+        tag: 'java'
+      },
+      {
+        name: 'JavaScript',
+        tag: 'javascript'
+      },
+      {
+        name: 'C++',
+        tag: 'cpp'
+      },
+      {
+        name: 'Erlang',
+        tag: 'erlang'
+      }
+    ]
+    return {
+      languages: languages,
+      selectedLanguage: languages[0]
     }
   }
 }
