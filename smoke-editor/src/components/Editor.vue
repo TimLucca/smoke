@@ -1,6 +1,4 @@
-
 <template>
-
   <div class = "editor">
     <b-dropdown v-model="selectedLanguage">
       <button slot="trigger" class="button is-primary">
@@ -15,15 +13,6 @@
       </b-dropdown-item>
     </b-dropdown>
 
-<<<<<<< HEAD
-    <!--This is the Resize button-->
-    <WindowMinimizeIcon/>
-    <div class = "MinimizeIcon">
-                <span class="mdi-window-minimize">
-                  <i class="fas window-minimize"></i> <!--Somehow doesn't show the icon-->
-                </span>
-    </div>
-=======
 
     <!--Maximize Button-->
     <a class="button is-small  is-pulled-right">
@@ -40,7 +29,6 @@
     </a>
 
 
->>>>>>> Mydelyn
 
     <brace style="height: 500px"
            :fontsize="'12px'"
@@ -59,16 +47,11 @@
   import Vue from 'vue'
   import Brace from 'vue-bulma-brace'
   import Buefy from 'buefy'
-  import MinimizeIcon from 'vue-material-design-icons/window-minimize.vue'
   // import 'buefy/lib/buefy.css'
-
   Vue.use(Buefy)
-
-<<<<<<< HEAD
   export default{
     components: {
-      Brace,
-      MinimizeIcon
+      Brace
     },
     data: function () {
       let languages = [
@@ -91,46 +74,11 @@
         {
           name: 'JavaScript',
           tag: 'javascript'
-        },
-        {
-          name: 'C++',
-          tag: 'cpp'
-        },
-        {
-          name: 'Erlang',
-          tag: 'erlang'
         }
       ]
       return {
         languages: languages,
         selectedLanguage: languages[0]
-=======
-export default{
-  components: {
-    Brace
-  },
-  data: function () {
-    let languages = [
-      {
-        name: 'Python 3',
-        tag: 'python'
-      },
-      {
-        name: 'Python 2',
-        tag: 'python'
-      },
-      {
-        name: 'Ruby',
-        tag: 'ruby'
-      },
-      {
-        name: 'Java',
-        tag: 'java'
-      },
-      {
-        name: 'JavaScript',
-        tag: 'javascript'
->>>>>>> Mydelyn
       }
     }
   }
