@@ -1,3 +1,4 @@
+
 <template>
 
   <div class = "editor">
@@ -14,6 +15,7 @@
       </b-dropdown-item>
     </b-dropdown>
 
+<<<<<<< HEAD
     <!--This is the Resize button-->
     <WindowMinimizeIcon/>
     <div class = "MinimizeIcon">
@@ -21,10 +23,28 @@
                   <i class="fas window-minimize"></i> <!--Somehow doesn't show the icon-->
                 </span>
     </div>
+=======
+
+    <!--Maximize Button-->
+    <a class="button is-small  is-pulled-right">
+    <span class="icon is-small ">
+      <font-awesome-icon icon="window-maximize" />
+    </span>
+    </a>
+
+    <!--Minimize Button -->
+    <a class="button is-small  is-pulled-right">
+    <span class="icon is-small ">
+      <font-awesome-icon icon="window-minimize" />
+    </span>
+    </a>
+
+
+>>>>>>> Mydelyn
 
     <brace style="height: 500px"
            :fontsize="'12px'"
-           :theme="'github'"
+           :theme="'xcode'"
            :mode="selectedLanguage.tag"
            :codefolding="'markbegin'"
            :softwrap="'free'"
@@ -33,7 +53,6 @@
     </brace>
   </div>
 </template>
-
 
 
 <script>
@@ -45,6 +64,7 @@
 
   Vue.use(Buefy)
 
+<<<<<<< HEAD
   export default{
     components: {
       Brace,
@@ -84,6 +104,33 @@
       return {
         languages: languages,
         selectedLanguage: languages[0]
+=======
+export default{
+  components: {
+    Brace
+  },
+  data: function () {
+    let languages = [
+      {
+        name: 'Python 3',
+        tag: 'python'
+      },
+      {
+        name: 'Python 2',
+        tag: 'python'
+      },
+      {
+        name: 'Ruby',
+        tag: 'ruby'
+      },
+      {
+        name: 'Java',
+        tag: 'java'
+      },
+      {
+        name: 'JavaScript',
+        tag: 'javascript'
+>>>>>>> Mydelyn
       }
     }
   }
