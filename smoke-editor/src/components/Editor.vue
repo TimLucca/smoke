@@ -16,7 +16,8 @@
 
     <!--Maximize Button-->
     <a class="button is-small  is-pulled-right">
-    <span class="icon is-small ">
+      on:click="toggleColor">
+      <span class="icon is-small ">
       <font-awesome-icon icon="window-maximize" />
     </span>
     </a>
