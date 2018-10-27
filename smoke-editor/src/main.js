@@ -2,10 +2,18 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import Resource from 'vue-resource'
-import Bulma from 'vue-bulma-components'
 import App from './App'
+import Bulma from 'vue-bulma-components'
 import Auth from './auth'
 import router from './router'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faWindowMinimize, faWindowMaximize } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faWindowMinimize, faWindowMaximize)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(Resource)
 Vue.use(Bulma)
