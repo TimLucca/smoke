@@ -6,6 +6,7 @@ import Bulma from 'vue-bulma-components'
 import App from './App'
 import Auth from './auth'
 import router from './router'
+import 'vue-material-design-icons/styles.css'
 
 Vue.use(Resource)
 Vue.use(Bulma)

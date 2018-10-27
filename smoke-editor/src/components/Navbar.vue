@@ -10,7 +10,9 @@
       </router-link>
     </navbar-brand>
   </navbar>
+
 </template>
+
 
 <style scoped>
 .navbar {
