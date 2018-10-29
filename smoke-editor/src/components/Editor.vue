@@ -1,70 +1,87 @@
 <template>
-  <div class = "editor">
-    <b-dropdown v-model="selectedLanguage">
-      <button slot="trigger" class="button is-primary">
+  <section>
+    <editor style="height: 500px"
+      theme="github"
+      :lang="selectedLanguage.tag"
+      v-model="content"
+      @init="editorInit">
+    </editor>
+    
+   <b-dropdown v-model="selectedLanguage">
+      <button
+        slot="trigger"
+        class="button is-primary">
         <span>{{ selectedLanguage.name }}</span>
-        <b-icon icon="arrow-down"/>
+        <b-icon icon="menu-down"/>
       </button>
 
-      <b-dropdown-item v-for="lang in languages"
-                       v-bind:value="lang"
-                       v-bind:key="lang.name">
-                       {{ lang.name }}
+      <b-dropdown-item
+        v-for="lang in languages"
+        :value="lang"
+        :key="lang.name">
+        {{ lang.name }}
       </b-dropdown-item>
     </b-dropdown>
-
-    <brace style="height: 500px"
-           :fontsize="'12px'"
-           :theme="'xcode'"
-           :mode="selectedLanguage.tag"
-           :codefolding="'markbegin'"
-           :softwrap="'free'"
-           :selectionstyle="'text'"
-           :highlightline="true">
-    </brace>
-  </div>
+    <button 
+      class="button is-primary"
+      @click="submit">
+      Test
+    </button>
+  </section>
 </template>
 
-
-
 <script>
-import Vue from 'vue'
-import Brace from 'vue-bulma-brace'
-import Buefy from 'buefy'
-// import 'buefy/lib/buefy.css'
+import axios from 'axios'
+import { API_URL } from '@/definitions'
 
-Vue.use(Buefy)
+let languages = [
+  {
+    name: 'Python 2',
+    tag: 'python'
+  },
+  {
+    name: 'Python 3',
+    tag: 'python'
+  },
+  {
+    name: 'Ruby',
+    tag: 'ruby'
+  },
+  {
+    name: 'Java',
+    tag: 'java'
+  },
+  {
+    name: 'JavaScript',
+    tag: 'javascript'
+  }
+]
 
-export default{
+export default {
   components: {
-    Brace
+    editor: require('vue2-ace-editor')
+  },
+  methods: {
+    editorInit () {
+      require('brace/ext/language_tools')
+      require('brace/theme/github')
+      languages.forEach((lang) => require('brace/mode/' + lang.tag))
+    },
+    async submit () {
+      await axios.post(API_URL + '/api/v1/test', {
+        code: window.btoa(this.content)
+      }, {
+        headers: {
+          Authorization: `Bearer ${this.$store.state.auth.access_token}`
+        }
+      })
+    }
   },
   data: function () {
-    let languages = [
-      {
-        name: 'Python 3',
-        tag: 'python'
-      },
-      {
-        name: 'Python 2',
-        tag: 'python'
-      },
-      {
-        name: 'Ruby',
-        tag: 'ruby'
-      },
-      {
-        name: 'Java',
-        tag: 'java'
-      },
-      {
-        name: 'JavaScript',
-        tag: 'javascript'
-      }
-    ]
     return {
       languages: languages,
-      selectedLanguage: languages[0]
+      selectedLanguage: languages[0],
+      content: ''
     }
   }
 }
