@@ -42,6 +42,5 @@ results = tests.map do |test|
   end
 end
 
-File.open('output.json', 'w') do |file|
-  file.write(JSON.pretty_generate(results.to_h))
-end
+
+file.write(JSON.pretty_generate(results.to_h))
