@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import Resource from 'vue-resource'
 import Buefy from 'buefy'
+import { abilitiesPlugin } from '@casl/vue'
 
 import App from './App'
 import router from './router'
@@ -12,12 +13,9 @@ import 'buefy/dist/buefy.css'
 
 Vue.use(Resource)
 Vue.use(Buefy)
+Vue.use(abilitiesPlugin)
 
 Vue.config.productionTip = false
-
-Vue.http.headers.common['Authorization'] = `Bearer ${localStorage.getItem('id_token')}`
-
-// Check the user's auth status when the app starts
 
 /* eslint-disable no-new */
 const vm = new Vue({
