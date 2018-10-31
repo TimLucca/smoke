@@ -43,4 +43,4 @@ results = tests.map do |test|
 end
 
 
-file.write(JSON.pretty_generate(results.to_h))
+puts(JSON.pretty_generate(results.to_h))
