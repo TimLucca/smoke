@@ -5,7 +5,7 @@ class Runnertest < Minitest::Test
 
   def test_get_true_response
 
-    assert_empty 'expected', 'actual'
+    assert_equal 'expected', 'actual'
   end
 
 end
