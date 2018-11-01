@@ -40,9 +40,9 @@ RUN apk add --no-cache mono --repository http://dl-cdn.alpinelinux.org/alpine/ed
     cert-sync /etc/ssl/certs/ca-certificates.crt && \
     apk del .build-dependencies
 
-COPY ./runner.rb ./runner.rb
-COPY ./run.sh ./run.sh
-COPY ./output.json ./output.json
+COPY runner.rb ./runner.rb
+COPY run.sh ./run.sh
+COPY output.json ./output.json
 
 RUN rm -rf /var/cache/apk/*
 
