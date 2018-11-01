@@ -47,5 +47,4 @@ def run(source)
     return JSON.pretty_generate(results.to_h)
 end
 
-x = run(source)
-puts(x)
+puts(run(source))
