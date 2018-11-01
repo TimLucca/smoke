@@ -44,7 +44,8 @@ def run(source)
             [symbol, { success: false, build: build_output }]
         end
     end
-    puts(JSON.pretty_generate(results.to_h))
+    return JSON.pretty_generate(results.to_h)
 end
 
-run(source)
+x = run(source)
+puts(x)
