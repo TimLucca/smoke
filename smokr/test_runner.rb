@@ -2,10 +2,6 @@ require 'minitest/autorun'
 require_relative 'runner'
 require 'json'
 
-
-
-
-
 class TestThing < MiniTest::Test
   def self.srcjson
     sourceObject = '
@@ -34,7 +30,6 @@ class TestThing < MiniTest::Test
     expected = JSON.parse(expected)
     x = Runner.new
     assert_equal x.run(parsedObject), expected
-    puts('running?')
   end
 end
 
