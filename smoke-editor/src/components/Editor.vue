@@ -31,7 +31,7 @@
       <div class="column"></div>
       <template v-if="windowSize==='maximum'">
         <div class="column is-full">
-          <brace v-bind:style="{height:windowHeight +'px'}"
+          <Brace v-bind:style="{height:windowHeight +'px'}"
                  :fontsize="'12px'"
                  :theme="'xcode'"
                  :mode="selectedLanguage.tag"
@@ -39,12 +39,12 @@
                  :softwrap="'free'"
                  :selectionstyle="'text'"
                  :highlightline="true">
-          </brace>
+          </Brace>
         </div>
       </template>
       <template v-else>
         <div class="column is-half">
-          <brace v-bind:style="{height:windowHeight +'px'}"
+          <Brace v-bind:style="{height:windowHeight +'px'}"
                  :fontsize="'12px'"
                  :theme="'xcode'"
                  :mode="selectedLanguage.tag"
@@ -52,7 +52,7 @@
                  :softwrap="'free'"
                  :selectionstyle="'text'"
                  :highlightline="true">
-          </brace>
+          </Brace>
         </div>
       </template>
     </div>
