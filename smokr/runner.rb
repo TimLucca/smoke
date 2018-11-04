@@ -3,14 +3,14 @@ require 'json'
 require 'base64'
 require 'diffy'
 
-# Extends the String class to add additional symbol support
+# # comment
 class SimpleClass
   def out
     "#{@string}llo!"
   end
 end
 
-# comment
+# Extends the String class to add additional symbol support
 class String
   def camelcase
     split.map(&:capitalize).join
