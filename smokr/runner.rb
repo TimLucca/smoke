@@ -60,5 +60,6 @@ class Runner
     return JSON.pretty_generate(results.to_h)
   end
 end
+
 x = Runner.new
 puts(x.run(source))

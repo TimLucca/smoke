@@ -8,7 +8,7 @@ require_relative 'runner'
 
 class TestThing < MiniTest::Test
   def test_selfsrcjson
-    puts('I\m here 1')
+
     sourceObject = '
     {
        "tests" : [
@@ -23,7 +23,7 @@ class TestThing < MiniTest::Test
        "file" : "test.rb"
     }
     '
-    puts('I\m here 2')
+
     parsedObject = JSON.parse(sourceObject)
     expected = '{
   "large_input": {
@@ -31,13 +31,13 @@ class TestThing < MiniTest::Test
     "output": "1\n"
   }
 }'
-    # puts(expected)
-    puts('I\m here 3')
+    # puts(expected) # debugging
+
     x = Runner.new
-    y = x.run(parsedObject)
-    # puts(y)
+    # y = x.run(parsedObject) # debugging
+    # puts(y)                 # debugging
     assert_equal expected, x.run(parsedObject)
-    puts('I\m here 4')
+
 
   end
 end
