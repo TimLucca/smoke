@@ -37,6 +37,8 @@ class TestThing < MiniTest::Test
     # y = x.run(parsedObject) # debugging
     # puts(y)                 # debugging
     assert_equal expected, x.run(parsedObject)
+    assert(x.run(parsedObject) == expected)
+    assert(x.run(parsedObject) != nil)
   end
 end
 
