@@ -1,10 +1,6 @@
 require 'minitest/autorun'
 require_relative 'runner'
-#require 'json'
-
-
-
-
+require 'json'
 
 class TestThing < MiniTest::Test
   def test_selfsrcjson
@@ -31,14 +27,10 @@ class TestThing < MiniTest::Test
     "output": "1\n"
   }
 }'
-    # puts(expected) # debugging
-
-    x = Runner.new
-    # y = x.run(parsedObject) # debugging
-    # puts(y)                 # debugging
-    assert_equal expected, x.run(parsedObject)
-    assert(x.run(parsedObject) == expected)
-    assert(x.run(parsedObject) != nil)
+    runner = Runner.new
+    assert_equal expected, runner.run(parsedObject)
+    assert(runner.run(parsedObject) == expected)
+    assert(runner.run(parsedObject) != nil)
   end
 end
 
