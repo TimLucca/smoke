@@ -27,33 +27,34 @@
       </template>
     </a>
 
-    <!--Maximize Button
-    <a class="button is-small  is-pulled-right">
-      <span class="icon is-small " v-on:click="maximize()">
-      <font-awesome-icon icon="window-maximize" />
-    </span>
-    </a>
-
-    <a class="button is-small  is-pulled-right">
-    <span class="icon is-small " v-on:click="minimize()">
-      <font-awesome-icon icon="window-minimize" />
-    </span>
-    </a> -->
-
-
     <div class="columns">
       <div class="column"></div>
-      <div class="column is-full">
-        <brace style="height:500px"
-               :fontsize="'12px'"
-               :theme="'xcode'"
-               :mode="selectedLanguage.tag"
-               :codefolding="'markbegin'"
-               :softwrap="'free'"
-               :selectionstyle="'text'"
-               :highlightline="true">
-        </brace>
-      </div>
+      <template v-if="windowSize==='maximum'">
+        <div class="column is-full">
+          <brace v-bind:style="{height:windowHeight +'px'}"
+                 :fontsize="'12px'"
+                 :theme="'xcode'"
+                 :mode="selectedLanguage.tag"
+                 :codefolding="'markbegin'"
+                 :softwrap="'free'"
+                 :selectionstyle="'text'"
+                 :highlightline="true">
+          </brace>
+        </div>
+      </template>
+      <template v-else>
+        <div class="column is-half">
+          <brace v-bind:style="{height:windowHeight +'px'}"
+                 :fontsize="'12px'"
+                 :theme="'xcode'"
+                 :mode="selectedLanguage.tag"
+                 :codefolding="'markbegin'"
+                 :softwrap="'free'"
+                 :selectionstyle="'text'"
+                 :highlightline="true">
+          </brace>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -94,6 +95,7 @@
       ]
       return {
         windowSize: 'maximum',
+        windowHeight: 500,
         languages: languages,
         selectedLanguage: languages[0]
       }
@@ -101,11 +103,13 @@
     methods: {
       maximize: function () {
         this.windowSize = 'maximum'
-        console.log('maximized')
+        this.windowHeight = 500
+        // console.log('maximized')
       },
       minimize: function () {
         this.windowSize = 'minimum'
-        console.log('minimized')
+        this.windowHeight = 250
+        // console.log('minimized')
       }
     }
   }
