@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'runner'
+require_relative '../runner'
 require 'json'
 
 class TestThing < MiniTest::Test
@@ -25,5 +25,7 @@ class TestThing < MiniTest::Test
     }
     actual = JSON.parse Runner.run(source)
     assert_equal actual, expected
+    assert(actual == expected)
+    assert(actual != nil)
   end
 end
