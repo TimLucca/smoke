@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'runner'
+require_relative '../runner'
 require 'json'
 
 class TestThing < MiniTest::Test
