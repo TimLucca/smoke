@@ -17,23 +17,9 @@ class String
             .downcase
     end
 end
-source =
-'{
-   "tests" : [
-      {
-         "output" : "MQo=",
-         "name" : "Large Input",
-         "input" : "NQoxIDIgLTIgMjU3IC0zCg=="
-      }
-   ],
-   "command" : "ruby test.rb",
-   "code" : "cCBbKiQ8XVsxXS5zcGxpdC5taW5fYnl7fGx8dj1sLnRvX2k7dioqNC12fS50b19p",
-   "file" : "test.rb"
-}'
-source = JSON.parse(source)
-#source = JSON.parse(STDIN.read)
+
 class Runner
-    def run(source)
+    def self.run(source)
 
         tests = source['tests']
 
@@ -60,5 +46,3 @@ class Runner
         return JSON.pretty_generate(results.to_h)
     end
 end
-x = Runner.new
-puts(x.run(source))
