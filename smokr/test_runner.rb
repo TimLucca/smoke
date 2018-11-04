@@ -37,9 +37,6 @@ class TestThing < MiniTest::Test
     # y = x.run(parsedObject) # debugging
     # puts(y)                 # debugging
     assert_equal expected, x.run(parsedObject)
-
-
   end
 end
 
-#TestThing.srcjson
