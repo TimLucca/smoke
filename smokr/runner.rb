@@ -31,7 +31,7 @@ source =
    "file" : "test.rb"
 }'
 source = JSON.parse(source)
-
+#source = JSON.parse(STDIN.read)
 class Runner
   def run(source)
 
