@@ -13,32 +13,48 @@
       </b-dropdown-item>
     </b-dropdown>
 
+    <!--Both Button-->
+    <a class="button is-small is-pulled-right">
+      <template v-if="windowSize==='maximum'">
+        <span class="icon is-small " v-on:click="minimize()">
+          <font-awesome-icon icon="window-minimize" />
+        </span>
+      </template>
+      <template v-else>
+        <span class="icon is-small " v-on:click="maximize()">
+          <font-awesome-icon icon="window-maximize" />
+        </span>
+      </template>
+    </a>
 
-    <!--Maximize Button-->
+    <!--Maximize Button
     <a class="button is-small  is-pulled-right">
       <span class="icon is-small " v-on:click="maximize()">
       <font-awesome-icon icon="window-maximize" />
     </span>
     </a>
 
-    <!--Minimize Button -->
     <a class="button is-small  is-pulled-right">
     <span class="icon is-small " v-on:click="minimize()">
       <font-awesome-icon icon="window-minimize" />
     </span>
-    </a>
+    </a> -->
 
 
-
-    <brace style="height: 500px"
-           :fontsize="'12px'"
-           :theme="'xcode'"
-           :mode="selectedLanguage.tag"
-           :codefolding="'markbegin'"
-           :softwrap="'free'"
-           :selectionstyle="'text'"
-           :highlightline="true">
-    </brace>
+    <div class="columns">
+      <div class="column"></div>
+      <div class="column is-full">
+        <brace style="height:500px"
+               :fontsize="'12px'"
+               :theme="'xcode'"
+               :mode="selectedLanguage.tag"
+               :codefolding="'markbegin'"
+               :softwrap="'free'"
+               :selectionstyle="'text'"
+               :highlightline="true">
+        </brace>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -77,15 +93,18 @@
         }
       ]
       return {
+        windowSize: 'maximum',
         languages: languages,
         selectedLanguage: languages[0]
       }
     },
     methods: {
       maximize: function () {
+        this.windowSize = 'maximum'
         console.log('maximized')
       },
       minimize: function () {
+        this.windowSize = 'minimum'
         console.log('minimized')
       }
     }
