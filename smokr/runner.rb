@@ -57,9 +57,10 @@ class Runner
         [symbol, { success: false, build: build_output }]
       end
     end
-    return JSON.pretty_generate(results.to_h)
+    JSON.pretty_generate(results.to_h)
   end
 end
 
-x = Runner.new
-puts(x.run(source))
+# console output
+# x = Runner.new
+# puts(x.run(source))
