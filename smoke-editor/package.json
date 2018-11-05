@@ -33,10 +33,9 @@
     "vue-material-design-icons": "^2.3.0",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
     "vue2-ace-editor": "^0.0.11",
     "vuex-persistedstate": "^2.5.4"
->>>>>>> master
   },
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.25",

@@ -2,7 +2,6 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import Resource from 'vue-resource'
-import Bulma from 'vue-bulma-components'
 import Buefy from 'buefy'
 import { abilitiesPlugin } from '@casl/vue'
 import App from './App'
@@ -16,7 +15,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(faWindowMinimize, faWindowMaximize)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-
 
 Vue.use(Resource)
 Vue.use(Buefy)
