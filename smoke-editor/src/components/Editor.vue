@@ -12,6 +12,7 @@
         </span>
       </template>
     </a>
+
     <div class="columns">
       <div class="column"></div>
       <template v-if="windowSize==='maximum'">
@@ -45,8 +46,9 @@
         </div>
       </template>
       <template v-else>
+
         <div class="column is-half">
-          <editor style="height: 250px"
+          <editor style="height: 500px"
                   theme="github"
                   :lang="selectedLanguage.tag"
                   v-model="content"
@@ -114,7 +116,7 @@
       },
       shrinkWindow: function () {
         this.windowSize = 'minimum'
-        this.windowHeight = 250
+        this.windowHeight = 500
       },
       editorInit () {
         require('brace/ext/language_tools')
