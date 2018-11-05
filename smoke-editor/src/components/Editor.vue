@@ -1,91 +1,91 @@
 <template>
-  <div class = "editor">
+  <section>
+    <editor style="height: 500px"
+            theme="github"
+            :lang="selectedLanguage.tag"
+            v-model="content"
+            @init="editorInit">
+    </editor>
+
     <b-dropdown v-model="selectedLanguage">
-      <button slot="trigger" class="button is-primary">
+      <button
+        slot="trigger"
+        class="button is-primary">
         <span>{{ selectedLanguage.name }}</span>
-        <b-icon icon="arrow-down"/>
+        <b-icon icon="menu-down"/>
       </button>
 
-      <b-dropdown-item v-for="lang in languages"
-                       v-bind:value="lang"
-                       v-bind:key="lang.name">
+      <b-dropdown-item
+        v-for="lang in languages"
+        :value="lang"
+        :key="lang.name">
         {{ lang.name }}
       </b-dropdown-item>
     </b-dropdown>
-
-
-    <!--Maximize Button-->
-    <a class="button is-small  is-pulled-right">
-      <span class="icon is-small " v-on:click="maximize()">
-      <font-awesome-icon icon="window-maximize" />
-    </span>
-    </a>
-
-    <!--Minimize Button -->
-    <a class="button is-small  is-pulled-right">
-    <span class="icon is-small " v-on:click="minimize()">
-      <font-awesome-icon icon="window-minimize" />
-    </span>
-    </a>
-
-
-
-    <brace style="height: 500px"
-           :fontsize="'12px'"
-           :theme="'xcode'"
-           :mode="selectedLanguage.tag"
-           :codefolding="'markbegin'"
-           :softwrap="'free'"
-           :selectionstyle="'text'"
-           :highlightline="true">
-    </brace>
-  </div>
+    <button
+      class="button is-primary"
+      @click="submit">
+      Test
+    </button>
+  </section>
 </template>
 
 <script>
-  import Vue from 'vue'
-  import Brace from 'vue-bulma-brace'
-  import Buefy from 'buefy'
-  // import 'buefy/lib/buefy.css'
-  Vue.use(Buefy)
-  export default{
-    components: {
-      Brace
+  import axios from 'axios'
+  import { API_URL } from '@/definitions'
+  let languages = [
+    {
+      name: 'Python 2',
+      tag: 'python'
     },
-    data: function () {
-      let languages = [
-        {
-          name: 'Python 3',
-          tag: 'python'
-        },
-        {
-          name: 'Python 2',
-          tag: 'python'
-        },
-        {
-          name: 'Ruby',
-          tag: 'ruby'
-        },
-        {
-          name: 'Java',
-          tag: 'java'
-        },
-        {
-          name: 'JavaScript',
-          tag: 'javascript'
-        }
-      ]
-      return {
-        languages: languages,
-        selectedLanguage: languages[0]
-      }
+    {
+      name: 'Python 3',
+      tag: 'python'
+    },
+    {
+      name: 'Ruby',
+      tag: 'ruby'
+    },
+    {
+      name: 'Java',
+      tag: 'java'
+    },
+    {
+      name: 'JavaScript',
+      tag: 'javascript'
+    }
+  ]
+  export default {
+    components: {
+      editor: require('vue2-ace-editor')
     },
     methods: {
-      maximize: function () {
+      growWindow: function () {
         console.log('maximized')
       },
-      minimize: function () {
+      shrinkWindow: function () {
         console.log('minimized')
+      },
+      editorInit () {
+        require('brace/ext/language_tools')
+        require('brace/theme/github')
+        languages.forEach((lang) => require('brace/mode/' + lang.tag))
+      },
+      async submit () {
+        await axios.post(API_URL + '/api/v1/test', {
+          code: window.btoa(this.content)
+        }, {
+          headers: {
+            Authorization: `Bearer ${this.$store.state.auth.access_token}`
+          }
+        })
+      }
+    },
+    data: function () {
+      return {
+        languages: languages,
+        selectedLanguage: languages[0],
+        content: ''
       }
     }
   }
