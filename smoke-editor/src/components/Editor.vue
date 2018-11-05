@@ -22,6 +22,26 @@
                   v-model="content"
                   @init="editorInit">
           </editor>
+          <b-dropdown v-model="selectedLanguage">
+            <button
+              slot="trigger"
+              class="button is-primary">
+              <span>{{ selectedLanguage.name }}</span>
+              <b-icon icon="menu-down"/>
+            </button>
+
+            <b-dropdown-item
+              v-for="lang in languages"
+              :value="lang"
+              :key="lang.name">
+              {{ lang.name }}
+            </b-dropdown-item>
+          </b-dropdown>
+          <button
+            class="button is-primary"
+            @click="submit">
+            Test
+          </button>
         </div>
       </template>
       <template v-else>
@@ -32,30 +52,29 @@
                   v-model="content"
                   @init="editorInit">
           </editor>
+          <b-dropdown v-model="selectedLanguage">
+            <button
+              slot="trigger"
+              class="button is-primary">
+              <span>{{ selectedLanguage.name }}</span>
+              <b-icon icon="menu-down"/>
+            </button>
+
+            <b-dropdown-item
+              v-for="lang in languages"
+              :value="lang"
+              :key="lang.name">
+              {{ lang.name }}
+            </b-dropdown-item>
+          </b-dropdown>
+          <button
+            class="button is-primary"
+            @click="submit">
+            Test
+          </button>
         </div>
       </template>
     </div>
-
-    <b-dropdown v-model="selectedLanguage">
-      <button
-        slot="trigger"
-        class="button is-primary">
-        <span>{{ selectedLanguage.name }}</span>
-        <b-icon icon="menu-down"/>
-      </button>
-
-      <b-dropdown-item
-        v-for="lang in languages"
-        :value="lang"
-        :key="lang.name">
-        {{ lang.name }}
-      </b-dropdown-item>
-    </b-dropdown>
-    <button
-      class="button is-primary"
-      @click="submit">
-      Test
-    </button>
   </section>
 </template>
 
