@@ -1,16 +1,9 @@
 <template>
   <section>
     <a class="button is-small is-pulled-right">
-      <template v-if="widthVar==='column is-full'">
-        <span class="icon is-small" v-on:click="shrinkWindow()">
-          <font-awesome-icon icon="window-minimize" />
-        </span>
-      </template>
-      <template v-else>
-        <span class="icon is-small" v-on:click="growWindow()">
-          <font-awesome-icon icon="window-maximize" />
-        </span>
-      </template>
+      <span class="icon is-small" v-on:click="changeWindow()">
+        <div :is="windowButton"></div>
+      </span>
     </a>
 
     <div class="columns">
@@ -50,6 +43,14 @@
 <script>
   import axios from 'axios'
   import { API_URL } from '@/definitions'
+  import Vue from 'vue'
+  import { library } from '@fortawesome/fontawesome-svg-core'
+  import { faWindowMinimize, faWindowMaximize } from '@fortawesome/free-solid-svg-icons'
+  import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+  library.add(faWindowMinimize, faWindowMaximize)
+  Vue.component('font-awesome-icon', FontAwesomeIcon)
+
   let languages = [
     {
       name: 'Python 2',
@@ -72,16 +73,26 @@
       tag: 'javascript'
     }
   ]
+
   export default {
     components: {
-      editor: require('vue2-ace-editor')
+      editor: require('vue2-ace-editor'),
+      'minButton': {
+        template: '<font-awesome-icon icon="window-minimize"/>'
+      },
+      'maxButton': {
+        template: '<font-awesome-icon icon="window-maximize"/>'
+      }
     },
     methods: {
-      growWindow: function () {
-        this.widthVar = 'column is-full'
-      },
-      shrinkWindow: function () {
-        this.widthVar = 'column is-half'
+      changeWindow: function () {
+        if (this.widthVar === 'column is-half') {
+          this.widthVar = 'column is-full'
+          this.windowButton = 'minButton'
+        } else {
+          this.widthVar = 'column is-half'
+          this.windowButton = 'maxButton'
+        }
       },
       editorInit () {
         require('brace/ext/language_tools')
@@ -100,6 +111,7 @@
     },
     data: function () {
       return {
+        windowButton: 'minButton',
         widthVar: 'column is-full',
         languages: languages,
         selectedLanguage: languages[0],

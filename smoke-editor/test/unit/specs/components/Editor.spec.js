@@ -33,14 +33,14 @@ describe('Editor.vue', () => {
 
   it('should change to the small size', () => {
     const vm = mount(Editor)
-    vm.shrinkWindow()
+    vm.changeWindow()
     expect(vm.widthVar).to.equal('column is-half')
   })
 
   it('should change back to default size', () => {
     const vm = mount(Editor)
-    vm.shrinkWindow()
-    vm.growWindow()
+    vm.changeWindow()
+    vm.changeWindow()
     expect(vm.widthVar).to.equal('column is-full')
   })
 })
