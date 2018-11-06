@@ -1,5 +1,5 @@
 #!/bin/bash
-if (echo -n ${SRC_JSON} | ruby ./runner.rb 1>stdout.txt 2>stderr.txt) then
+if (echo -n ${SRC_JSON} | ruby ./main_runner.rb 1>stdout.txt 2>stderr.txt) then
    cat output.json
 else
    stdout=$(cat stdout.txt)

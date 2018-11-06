@@ -17,3 +17,9 @@ before_install:
 
 script:
   - .travis/run.sh
+
+matrix:
+  include:
+  - language: ruby
+    script: bundle exec rake
+    rvm: 2.1
