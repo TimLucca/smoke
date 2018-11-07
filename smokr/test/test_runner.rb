@@ -28,4 +28,10 @@ class TestThing < MiniTest::Test
     assert(actual == expected)
     assert(actual != nil)
   end
+
+  def test_python
+
+    actual = JSON.parse Runner.run(source)
+    assert_equal expected, actual
+  end
 end
