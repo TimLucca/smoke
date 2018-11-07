@@ -1,7 +1,12 @@
 require 'minitest/autorun'
 require_relative '../runner'
 require 'json'
-require 'helper'
+
+require 'simplecov'
+SimpleCov.start
+
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 class TestThing < MiniTest::Test
   def test_runner
