@@ -30,7 +30,46 @@ class TestThing < MiniTest::Test
   end
 
   def test_python
+    source =
+    {
+        "tests" => [
+        {
+          "output" => "MQo=",
+          "name" => "Should Pass",
+          "input" => "NQ=="
+        },
+        {
+            "output"=> "LTEK",
+            "name"=> "Should Pass 2",
+            "input"=> "Mw=="
+        },
+        {
+            "output" => "MQo=",
+            "name" => "Should Fail",
+            "input" => "Mw=="
+        }
+    ],
+        "command" => "python3 test.py",
+        "code" => "eCA9IGludChpbnB1dCgpKQp5ID0geCAtIDQKcHJpbnQoeSk=",
+        "file" => "test.py"
+    }
 
+    expected = {
+        "should_pass"=> {
+            "success"=> true,
+            "output"=> "1\n"
+        },
+        "should_pass2"=> {
+            "success"=> true,
+            "output"=> "-1\n"
+        },
+        "should_fail"=> {
+            "success"=> false,
+            "actual"=> "-1\n",
+            "expected"=> "1\n",
+            "difference"=> "--1\n+1\n"
+        }
+    }
     actual = JSON.parse Runner.run(source)
     assert_equal expected, actual
   end
