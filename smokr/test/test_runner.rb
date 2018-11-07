@@ -35,3 +35,5 @@ class TestThing < MiniTest::Test
     assert(actual != nil)
   end
 end
+
+SimpleCov write_last_run
