@@ -72,5 +72,6 @@ class TestThing < MiniTest::Test
     }
     actual = JSON.parse Runner.run(source)
     assert_equal expected, actual
+    assert(actual != nil)
   end
 end
