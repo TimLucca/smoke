@@ -4,7 +4,7 @@ pushd $(dirname $0)/..
 
 # make sure failing tests cause failing
 set -e
-for part in smokr; do
+for part in smoke-backend smoke-editor smokr; do
     pushd ${part}
     [ -f .travis/test.sh ] && .travis/test.sh
     popd
