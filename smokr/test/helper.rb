@@ -1,6 +1,6 @@
 require 'simplecov'
 SimpleCov.start do
-  track_files 'test/test_*.rb'
+  track_files 'smokr/**/*.rb'
 end
 
 require 'codecov'
