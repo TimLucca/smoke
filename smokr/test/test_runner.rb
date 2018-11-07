@@ -1,12 +1,7 @@
 require 'minitest/autorun'
 require_relative '../runner'
 require 'json'
-
-require 'simplecov'
-SimpleCov.start
-
-require 'codecov'
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
+require 'helper'
 
 class TestThing < MiniTest::Test
   def test_runner
@@ -35,5 +30,3 @@ class TestThing < MiniTest::Test
     assert(actual != nil)
   end
 end
-
-SimpleCov write_last_run
