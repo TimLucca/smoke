@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require_relative '../runner'
 require 'json'
+require 'diffy'
 
 require 'simplecov'
 SimpleCov.start
