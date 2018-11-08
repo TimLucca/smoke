@@ -1,6 +1,6 @@
 require 'simplecov'
 SimpleCov.start do
-  track_files ['runner.rb']
+  track_files 'runner.rb'
 end
 
 require 'codecov'
