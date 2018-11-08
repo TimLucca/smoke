@@ -23,7 +23,8 @@ class Runner
 
         tests = source['tests']
 
-        File.write(source['file'], Base64.decode64(source['code']).to_s)
+        File.write(source['file'],
+                   Base64.decode64(source['code']).to_s)
 
         results = tests.map do |test|
             symbol = test['name'].camelcase.underscore.to_sym
@@ -34,9 +35,12 @@ class Runner
                 actual, = Open3.capture2(source['command'],
                                          stdin_data: Base64.decode64(test['input']))
                 if actual == expected
-                    [symbol, { success: true, output: actual }]
+                    [symbol, { success: true,
+                               output: actual }]
                 else
-                    [symbol, { success: false, actual: actual.to_s, expected: expected.to_s,
+                    [symbol, { success: false,
+                               actual: actual.to_s,
+                               expected: expected.to_s,
                                difference: Diffy::Diff.new(actual, expected).to_s }]
                 end
             else
