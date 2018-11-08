@@ -4,11 +4,9 @@ import Vue from 'vue'
 import Resource from 'vue-resource'
 import Buefy from 'buefy'
 import { abilitiesPlugin } from '@casl/vue'
-
 import App from './App'
 import router from './router'
 import store from './store'
-
 import 'buefy/dist/buefy.css'
 
 Vue.use(Resource)
