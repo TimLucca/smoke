@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+
+gem 'bundle'
+gem 'codecov'
+gem 'diffy'
+gem 'minitest'
